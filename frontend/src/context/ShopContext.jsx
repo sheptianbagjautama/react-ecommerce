@@ -49,6 +49,21 @@ const ShopContextProvider = (props) => {
     return totalCount;
   };
 
+  const getCartAmount = () => {
+    let totalAmount = 0;
+    for (const items in cartItems) {
+      let itemInfo = products.find((product) => product._id === items);
+      for (const item in cartItems[items]) {
+        try {
+          if (cartItems[items][item] > 0) {
+            totalAmount += itemInfo.price * cartItems[items][item];
+          }
+        } catch (error) {}
+      }
+    }
+    return totalAmount;
+  };
+
   const updateQuantity = async (itemId, size, quantity) => {
     let cartData = structuredClone(cartItems);
 
@@ -68,6 +83,7 @@ const ShopContextProvider = (props) => {
     addToCart,
     getCartCount,
     updateQuantity,
+    getCartAmount,
   };
 
   return (
