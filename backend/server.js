@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
+import connectDB from "./config/mongodb.js";
 
 //App Config
 const app = express(); //menggunakan express.js
 const port = process.env.PORT || 4000; //port ketika backend dijalankan
+connectDB(); //memanggil fungsi connectDB untuk menghubungkan dengan database mongodb
 
 //middlewares
 app.use(express.json()); //request yang kita dapatkan akan menggunakan json
