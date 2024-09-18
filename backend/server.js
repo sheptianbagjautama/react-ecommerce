@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
+import userRouter from "./routes/userRoute.js";
 
 //App Config
 const app = express(); //menggunakan express.js
@@ -15,6 +16,7 @@ app.use(express.json()); //request yang kita dapatkan akan menggunakan json
 app.use(cors()); //agar backend dapat di akses di ip manapun , kalo tidak menggunakan ini akan kena block CORS
 
 //api endpoints
+app.use("/api/user", userRouter);
 
 //ini endpoint yang bisa digunakan
 app.get("/", (req, res) => {
