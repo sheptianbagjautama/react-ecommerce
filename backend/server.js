@@ -5,6 +5,7 @@ import connectDB from "./config/mongodb.js";
 import connectCloudinary from "./config/cloudinary.js";
 import userRouter from "./routes/userRoute.js";
 import productRouter from "./routes/productRoute.js";
+import cartRouter from "./routes/cart.Route.js";
 
 //App Config
 const app = express(); //menggunakan express.js
@@ -19,6 +20,7 @@ app.use(cors()); //agar backend dapat di akses di ip manapun , kalo tidak menggu
 //api endpoints
 app.use("/api/user", userRouter);
 app.use("/api/product", productRouter);
+app.user("/api/cart", cartRouter);
 
 //ini endpoint yang bisa digunakan
 app.get("/", (req, res) => {
